@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # app:
+  #   platform: "linux/amd64"
+  #   build:
+  #     context: .
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     - ROCKET_ADDRESS=0.0.0.0
+  #     - ROCKET_PORT=8000
+  #     - GCS_ENDPOINT=fake-gcs-server:4443
+  #   depends_on:
+  #     - fake-gcs-server
+
+  fake-gcs-server:
+    image: fsouza/fake-gcs-server
+    ports:
+      - "4443:4443"
+    environment:
+      - PORT=4443
+    volumes:
+      - ./gcs-data:/data
